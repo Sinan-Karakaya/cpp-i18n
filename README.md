@@ -147,7 +147,7 @@ int main()
 
 ## Planned features
 
-- [ ] Support for objects inside of JSON files (#1)[https://github.com/Sinan-Karakaya/cpp-i18n/issues/1]
-- [ ] Support for pluralization (#2)[https://github.com/Sinan-Karakaya/cpp-i18n/issues/2]
-- [ ] Support for localization of numbers, dates, currencies, etc... (#4)[https://github.com/Sinan-Karakaya/cpp-i18n/issues/4]
-- [ ] Support for automatically detecting multiple locales (#3)[https://github.com/Sinan-Karakaya/cpp-i18n/issues/3]
+- [ ] Support for objects inside of JSON files [(#1)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/1)
+- [ ] Support for pluralization [(#2)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/2)
+- [ ] Support for localization of numbers, dates, currencies, etc... [(#4)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/4)
+- [ ] Support for automatically detecting multiple locales [(#3)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/3)
