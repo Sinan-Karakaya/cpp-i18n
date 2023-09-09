@@ -8,8 +8,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fdiagnostics-color=always
 add_subdirectory(src)
 
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-    option(BUILD_TESTING "Build tests" ON)
-
     if (BUILD_TESTING)
         add_subdirectory(tests)
     endif()
