@@ -42,8 +42,8 @@ target_link_libraries(
 
 ### Basic usage
 
+assets/locales/en/basic.json
 ```json
-// assets/locales/en/basic.json
 {
     "hello": "Hello, world!"
 }
@@ -62,15 +62,16 @@ int main()
 ```
 
 ### Multiple languages
+
+assets/locales/en/basic.json
 ```json
-// assets/locales/en/basic.json
 {
     "hello": "Hello, world!"
 }
 ```
 
+assets/locales/fr/basic.json
 ```json
-// assets/locales/fr/basic.json
 {
     "hello": "Bonjour, monde!"
 }
@@ -94,15 +95,15 @@ int main()
 
 ### Multiple files
 
+assets/locales/en/basic.json
 ```json
-// assets/locales/en/basic.json
 {
     "hello": "Hello, world!"
 }
 ```
 
+assets/locales/en/other.json
 ```json
-// assets/locales/en/other.json
 {
     "goodbye": "Goodbye, world!"
 }
@@ -123,8 +124,8 @@ int main()
 
 ### Custom locales directory path
 
+path/to/locales/en/basic.json
 ```json
-// path/to/locales/en/basic.json
 {
     "hello": "Hello, world!"
 }
