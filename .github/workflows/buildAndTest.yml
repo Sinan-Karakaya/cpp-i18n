@@ -1,0 +1,31 @@
+name: Build and test
+
+on:
+    push:
+        branches:
+        - main
+    pull_request:
+        branches:
+        - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Build
+              run: |
+                mkdir build
+                cd build
+                cmake .. -DCMAKE_BUILD_TYPE=Release
+                cmake --build .
+
+            - name: Test
+              run: |
+                cd build
+                cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
+                cmake --build .
+                cd tests
+                ./tests

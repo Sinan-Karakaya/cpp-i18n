@@ -1,4 +1,4 @@
-*build*
+cmake-build-*
 *.o
 .idea/
 .vscode.
