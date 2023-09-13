@@ -12,6 +12,7 @@ possible to use, with easy integration into existing projects.
     - [Multiple languages](#multiple-languages)
     - [Multiple files](#multiple-files)
     - [Custom locales directory path](#custom-locales-directory-path)
+    - [Parameters in localized strings](#parameters-in-localized-strings)
 - [Planned features](#planned-features)
 
 ## Installation
@@ -57,6 +58,8 @@ int main()
     i18n::Translator t;
     
     std::cout << t.translate("hello", "basic") << std::endl;    // "Hello, world!"
+    // or
+    std::cout << t("hello", "basic") << std::endl;              // "Hello, world!"
     return 0;
 }
 ```
@@ -86,9 +89,9 @@ int main()
     config.supportedLocales = {"en", "fr"};
     i18n::Translator t(config);
     
-    std::cout << t.translate("hello", "basic") << std::endl;    // "Hello, world!"
+    std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
     t.setLocale("fr");
-    std::cout << t.translate("hello", "basic") << std::endl;    // "Bonjour, monde!"
+    std::cout << t("hello", "basic") << std::endl;    // "Bonjour, monde!"
     return 0;
 }
 ```
@@ -116,8 +119,8 @@ int main()
 {
     i18n::Translator t;
     
-    std::cout << t.translate("hello", "basic") << std::endl;    // "Hello, world!"
-    std::cout << t.translate("goodbye", "other") << std::endl;  // "Goodbye, world!"
+    std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
+    std::cout << t("goodbye", "other") << std::endl;  // "Goodbye, world!"
     return 0;
 }
 ```
@@ -140,10 +143,33 @@ int main()
     config.localesDir = "path/to/locales";
     i18n::Translator t(config);
     
-    std::cout << t.translate("hello", "basic") << std::endl;    // "Hello, world!"
+    std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
     return 0;
 }
 ```
+
+### Parameters in localized strings
+
+assets/locales/en/parameters.json
+```json
+{
+    "hello": "Hello, my name is {{ name }}!"
+}
+```
+
+```cpp
+#include <Translator.hpp>
+
+int main()
+{
+    i18n::Translator t;
+    
+    std::cout << t("hello", "parameters", {{ "name", "John" }}) << std::endl;    // "Hello, my name is John!"
+    return 0;
+}
+```
+
+The format `{{ paramName }}` is space sensitive, so `{{paramName}}` will not work.
 
 ## Planned features
 
@@ -151,3 +177,4 @@ int main()
 - [ ] Support for pluralization [(#2)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/2)
 - [ ] Support for localization of numbers, dates, currencies, etc... [(#4)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/4)
 - [ ] Support for automatically detecting multiple locales [(#3)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/3)
+- [X] Support for parameters in localized strings
