@@ -114,7 +114,8 @@ namespace i18n
          * @param ns Namespace of the key. (e.g. "home")
          * @return Translation of the key in the namespace. (e.g. "Hello")
          */
-        std::string translate(const std::string &key, const std::string &ns = "");
+        std::string translate(const std::string &key, const std::string &ns = "", const
+        std::unordered_map<std::string, std::string> &args = {});
 
         /**
          * @brief Get the translation of a key in a namespace.
@@ -122,7 +123,8 @@ namespace i18n
          * @param ns Namespace of the key. (e.g. "home")
          * @return Translation of the key in the namespace. (e.g. "Hello")
          */
-        std::string operator()(const std::string &key, const std::string &ns = "");
+        std::string operator()(const std::string &key, const std::string &ns = "", const
+        std::unordered_map<std::string, std::string> &args = {});
 
     private:
         bool m_loadLocalesDirectory();
@@ -131,6 +133,8 @@ namespace i18n
 
         void m_printError(const std::string &message) const;
         void m_printWarning(const std::string &message) const;
+
+        std::string m_replaceArgs(const std::string &rawString, const std::unordered_map<std::string, std::string> &args) const;
 
     private:
         LocaleConfig m_localeConfig;

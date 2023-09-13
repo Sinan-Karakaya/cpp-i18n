@@ -1,0 +1,4 @@
+{
+  "test1": "My name is {{ name }}",
+  "test2": "My name is {{ name }} and I'm {{ age }} years old"
+}

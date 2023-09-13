@@ -11,7 +11,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(tests src/basic.cpp)
+add_executable(tests src/basic.cpp src/parameters.cpp)
 target_link_libraries(tests PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(tests PRIVATE Catch2::Catch2)
 target_link_libraries(tests PRIVATE cpp-i18n)
