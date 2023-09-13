@@ -24,10 +24,11 @@ jobs:
 
             # TODO(fix): For some reason, github Actions cant find the header catch2.hpp
 
-            # - name: Test
-            #   run: |
-            #     cd build
-            #     cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
-            #     make -j 2
-            #     cd tests
-            #     ./tests
+            - name: Test
+              run: |
+                sudo apt install catch2 -y
+                cd build
+                cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=On
+                make -j 2
+                cd tests
+                ./tests
