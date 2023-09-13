@@ -104,7 +104,8 @@ namespace i18n
         return m_localeConfig.supportedLocales;
     }
 
-    std::string Translator::translate(const std::string &key, const std::string &ns)
+    std::string Translator::translate(const std::string &key, const std::string &ns, const
+    std::unordered_map<std::string, std::string> &args)
     {
         if (m_locales.find(m_localeConfig.currentLocale) == m_locales.end()) {
             m_printError("The locale '" + m_localeConfig.currentLocale + "' is not loaded.");
@@ -116,12 +117,29 @@ namespace i18n
             return ns + "." + key;
         }
 
-        return m_locales[m_localeConfig.currentLocale][ns][key].get<std::string>();
+        if (args.empty())
+            return m_locales[m_localeConfig.currentLocale][ns][key].get<std::string>();
+        std::string rawString = m_locales[m_localeConfig.currentLocale][ns][key].get<std::string>();
+        return m_replaceArgs(rawString, args);
     }
 
-    std::string Translator::operator()(const std::string &key, const std::string &ns)
+    std::string Translator::operator()(const std::string &key, const std::string &ns, const
+    std::unordered_map<std::string, std::string> &args)
     {
-        return translate(key, ns);
+        return translate(key, ns, args);
+    }
+
+    std::string Translator::m_replaceArgs(const std::string &rawString, const std::unordered_map<std::string, std::string> &args) const
+    {
+        std::string result = rawString;
+        for (const auto &arg : args) {
+            std::string key = "{{ " + arg.first + " }}";
+            std::size_t pos = result.find(key);
+            if (pos == std::string::npos)
+                continue;
+            result.replace(pos, key.size(), arg.second);
+        }
+        return result;
     }
 
     bool Translator::m_loadLocalesDirectory()
@@ -141,12 +159,18 @@ namespace i18n
 
     void Translator::m_printError(const std::string &message) const
     {
+#ifndef NDEBUG
         std::cout << "\033[1;31m" << "cpp-i18n[ERROR]: " << message << "\033[0m" << std::endl;
+#endif
+        (void)message;
     }
 
     void Translator::m_printWarning(const std::string &message) const
     {
+#ifndef NDEBUG
         std::cout << "\033[1;33m" << "cpp-i18n[WARN]: " << message << "\033[0m" << std::endl;
+#endif
+        (void)message;
     }
 
     bool Translator::m_loadLocale(const std::string &locale)
