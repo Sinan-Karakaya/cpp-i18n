@@ -8,7 +8,7 @@
 //#define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
 
-#include "Translator.hpp"
+#include <cpp-i18n/Translator.hpp>
 
 TEST_CASE("Simple parameter", "[parameters]")
 {
