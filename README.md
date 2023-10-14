@@ -34,7 +34,7 @@ FetchContent_MakeAvailable(cpp-i18n)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE 
+    PRIVATE
     cpp-i18n
 )
 ```
@@ -51,12 +51,12 @@ assets/locales/en/basic.json
 ```
 
 ```cpp
-#include <Translator.hpp>
+#include <cpp-i18n/Translator.hpp>
 
 int main()
 {
     i18n::Translator t;
-    
+
     std::cout << t.translate("hello", "basic") << std::endl;    // "Hello, world!"
     // or
     std::cout << t("hello", "basic") << std::endl;              // "Hello, world!"
@@ -81,14 +81,14 @@ assets/locales/fr/basic.json
 ```
 
 ```cpp
-#include <Translator.hpp>
+#include <cpp-i18n/Translator.hpp>
 
 int main()
 {
     i18n::LocaleConfig config;
     config.supportedLocales = {"en", "fr"};
     i18n::Translator t(config);
-    
+
     std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
     t.setLocale("fr");
     std::cout << t("hello", "basic") << std::endl;    // "Bonjour, monde!"
@@ -113,12 +113,12 @@ assets/locales/en/other.json
 ```
 
 ```cpp
-#include <Translator.hpp>
+#include <cpp-i18n/Translator.hpp>
 
 int main()
 {
     i18n::Translator t;
-    
+
     std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
     std::cout << t("goodbye", "other") << std::endl;  // "Goodbye, world!"
     return 0;
@@ -135,14 +135,14 @@ path/to/locales/en/basic.json
 ```
 
 ```cpp
-#include <Translator.hpp>
+#include <cpp-i18n/Translator.hpp>
 
 int main()
 {
     i18n::LocaleConfig config;
     config.localesDir = "path/to/locales";
     i18n::Translator t(config);
-    
+
     std::cout << t("hello", "basic") << std::endl;    // "Hello, world!"
     return 0;
 }
@@ -158,12 +158,12 @@ assets/locales/en/parameters.json
 ```
 
 ```cpp
-#include <Translator.hpp>
+#include <cpp-i18n/Translator.hpp>
 
 int main()
 {
     i18n::Translator t;
-    
+
     std::cout << t("hello", "parameters", {{ "name", "John" }}) << std::endl;    // "Hello, my name is John!"
     return 0;
 }
