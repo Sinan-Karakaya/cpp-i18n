@@ -98,7 +98,6 @@ namespace i18n
             return false;
         }
 
-        locale.erase(locale.find('_'), std::string::npos);
         if (std::find(m_localeConfig.supportedLocales.begin(), m_localeConfig.supportedLocales.end(), locale)
         == m_localeConfig.supportedLocales.end()) {
             m_printError("The locale '" + locale + "' is not supported. Please see the method 'setSupportedLocales'.");

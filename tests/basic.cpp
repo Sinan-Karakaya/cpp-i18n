@@ -127,6 +127,6 @@ TEST_CASE("Auto detect locale", "[basic]")
     config.supportedLocales = {"fr", "en"};
     i18n::Translator t(config);
 
-    REQUIRE(t.autoDetectLocale() == true);
-    REQUIRE(t.getCurrentLocale() == "fr");
+    REQUIRE(t.autoDetectLocale() == false);
+    REQUIRE(t.getCurrentLocale() == "en");
 }
