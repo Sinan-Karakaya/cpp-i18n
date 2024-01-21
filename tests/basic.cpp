@@ -5,8 +5,7 @@
 ** basic
 */
 
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 
 #include <cpp-i18n/Translator.hpp>
 
@@ -120,4 +119,14 @@ TEST_CASE("Get supported locales", "[basic]")
     i18n::Translator t(config);
 
     REQUIRE(t.getSupportedLocales() == config.supportedLocales);
+}
+
+TEST_CASE("Auto detect locale", "[basic]")
+{
+    i18n::LocaleConfig config;
+    config.supportedLocales = {"fr", "en"};
+    i18n::Translator t(config);
+
+    REQUIRE(t.autoDetectLocale() == true);
+    REQUIRE(t.getCurrentLocale() == "fr");
 }

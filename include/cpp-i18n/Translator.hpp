@@ -14,7 +14,10 @@
 #include <filesystem>
 #include <unordered_map>
 #include <fstream>
+#include <locale>
+
 #include <nlohmann/json.hpp>
+
 using json = nlohmann::json;
 
 namespace i18n
@@ -89,6 +92,12 @@ namespace i18n
          * @return true if the locale was supported.
          */
         bool removeSupportedLocale(const std::string &supportedLocale);
+
+        /**
+         * @brief Auto detect the locale from the system locale.
+         * @return true if the locale is supported.
+        */
+        bool autoDetectLocale();
 
         /**
          * @brief Get the locales directory

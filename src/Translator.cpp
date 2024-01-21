@@ -89,6 +89,25 @@ namespace i18n
         return true;
     }
 
+    bool Translator::autoDetectLocale()
+    {
+        std::string locale = std::locale("").name();
+
+        if (locale.empty()) {
+            m_printError("The locale could not be auto-detected.");
+            return false;
+        }
+
+        locale.erase(locale.find('_'), std::string::npos);
+        if (std::find(m_localeConfig.supportedLocales.begin(), m_localeConfig.supportedLocales.end(), locale)
+        == m_localeConfig.supportedLocales.end()) {
+            m_printError("The locale '" + locale + "' is not supported. Please see the method 'setSupportedLocales'.");
+            return false;
+        }
+
+        return setLocale(locale);
+    }
+
     const std::string &Translator::getLocalesDirectory() const
     {
         return m_localeConfig.localesDirectory;
