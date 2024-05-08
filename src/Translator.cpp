@@ -5,7 +5,7 @@
 ** App
 */
 
-#include <cpp-i18n/Translator.hpp>
+#include "../include/cpp-i18n/Translator.hpp"
 
 namespace i18n
 {
