@@ -2,17 +2,17 @@
 
 ## Introduction
 
-cpp-i18n is a C++ library for internationalization (i18n) of C++ applications, which was made to be as simple as 
+cpp-i18n is a C++ library for internationalization (i18n) of C++ applications, which was made to be as simple as
 possible to use, with easy integration into existing projects.
 
 - [Installation](#installation)
-    - [CMake](#cmake)
+  - [CMake](#cmake)
 - [Usage](#usage)
-    - [Basic usage](#basic-usage)
-    - [Multiple languages](#multiple-languages)
-    - [Multiple files](#multiple-files)
-    - [Custom locales directory path](#custom-locales-directory-path)
-    - [Parameters in localized strings](#parameters-in-localized-strings)
+  - [Basic usage](#basic-usage)
+  - [Multiple languages](#multiple-languages)
+  - [Multiple files](#multiple-files)
+  - [Custom locales directory path](#custom-locales-directory-path)
+  - [Parameters in localized strings](#parameters-in-localized-strings)
 - [Planned features](#planned-features)
 
 ## Installation
@@ -27,7 +27,7 @@ include(FetchContent)
 FetchContent_Declare(
     cpp-i18n
     GIT_REPOSITORY   https://github.com/Sinan-Karakaya/cpp-i18n.git
-    GIT_TAG          v0.1.0
+    GIT_TAG          v0.2.2
 )
 
 FetchContent_MakeAvailable(cpp-i18n)
@@ -44,9 +44,10 @@ target_link_libraries(
 ### Basic usage
 
 assets/locales/en/basic.json
+
 ```json
 {
-    "hello": "Hello, world!"
+  "hello": "Hello, world!"
 }
 ```
 
@@ -67,16 +68,18 @@ int main()
 ### Multiple languages
 
 assets/locales/en/basic.json
+
 ```json
 {
-    "hello": "Hello, world!"
+  "hello": "Hello, world!"
 }
 ```
 
 assets/locales/fr/basic.json
+
 ```json
 {
-    "hello": "Bonjour, monde!"
+  "hello": "Bonjour, monde!"
 }
 ```
 
@@ -99,16 +102,18 @@ int main()
 ### Multiple files
 
 assets/locales/en/basic.json
+
 ```json
 {
-    "hello": "Hello, world!"
+  "hello": "Hello, world!"
 }
 ```
 
 assets/locales/en/other.json
+
 ```json
 {
-    "goodbye": "Goodbye, world!"
+  "goodbye": "Goodbye, world!"
 }
 ```
 
@@ -128,9 +133,10 @@ int main()
 ### Custom locales directory path
 
 path/to/locales/en/basic.json
+
 ```json
 {
-    "hello": "Hello, world!"
+  "hello": "Hello, world!"
 }
 ```
 
@@ -151,9 +157,10 @@ int main()
 ### Parameters in localized strings
 
 assets/locales/en/parameters.json
+
 ```json
 {
-    "hello": "Hello, my name is {{ name }}!"
+  "hello": "Hello, my name is {{ name }}!"
 }
 ```
 
@@ -177,4 +184,4 @@ The format `{{ paramName }}` is space sensitive, so `{{paramName}}` will not wor
 - [ ] Support for pluralization [(#2)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/2)
 - [ ] Support for localization of numbers, dates, currencies, etc... [(#4)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/4)
 - [ ] Support for automatically detecting multiple locales [(#3)](https://github.com/Sinan-Karakaya/cpp-i18n/issues/3)
-- [X] Support for parameters in localized strings
+- [x] Support for parameters in localized strings
