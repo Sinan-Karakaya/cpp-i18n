@@ -37,6 +37,12 @@ target_link_libraries(
     PRIVATE
     cpp-i18n
 )
+
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${cpp-i18n_SOURCE_DIR}/include
+)
 ```
 
 ## Usage
